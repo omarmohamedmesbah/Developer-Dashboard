@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Developer Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                D
+            </div>
+
+            <div>
+
+                <h2>
+                    DevDashboard
+                </h2>
+
+                <span>
+                    Developer Workspace
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a
+                href="#dashboard"
+                class="nav-link active"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="#projects"
+                class="nav-link"
+            >
+                <span>▣</span>
+                Projects
+            </a>
+
+
+            <a
+                href="#tasks"
+                class="nav-link"
+            >
+                <span>✓</span>
+                Tasks
+            </a>
+
+
+            <a
+                href="#skills"
+                class="nav-link"
+            >
+                <span>◆</span>
+                Skills
+            </a>
+
+
+            <a
+                href="#goals"
+                class="nav-link"
+            >
+                <span>◎</span>
+                Goals
+            </a>
+
+
+            <a
+                href="#statistics"
+                class="nav-link"
+            >
+                <span>▥</span>
+                Statistics
+            </a>
+
+
+            <a
+                href="#activity"
+                class="nav-link"
+            >
+                <span>◷</span>
+                Activity
+            </a>
+
+
+            <a
+                href="#settings"
+                class="nav-link"
+            >
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    Dashboard Online
+                </span>
+
+            </div>
+
+
+            <button
+                id="themeButton"
+                class="theme-button"
+                type="button"
+            >
+
+                <span id="themeIcon">
+                    ☾
+                </span>
+
+                Toggle Theme
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ======================================
+             TOP HEADER
+        ======================================= -->
+
+        <header class="top-header">
+
+
+            <div class="header-left">
+
+                <div class="breadcrumb">
+
+                    <span>
+                        Workspace
+                    </span>
+
+                    <span>
+                        /
+                    </span>
+
+                    <strong>
+                        Dashboard
+                    </strong>
+
+                </div>
+
+
+                <h1>
+                    Welcome back, Developer 👋
+                </h1>
+
+                <p>
+                    Here's what's happening with your development journey.
+                </p>
+
+            </div>
+
+
+            <div class="header-right">
+
+
+                <div class="current-date">
+
+                    <span>
+                        Today
+                    </span>
+
+                    <strong id="currentDate">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        D
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <strong>
+                            Developer
+                        </strong>
+
+                        <span>
+                            Developer
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==========================================
+             DASHBOARD
+        =========================================== -->
+
+        <section
+            id="dashboard"
+            class="section"
+        >
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Overview
+                    </h2>
+
+                    <p>
+                        Your development performance at a glance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ======================================
+                 REAL STATISTICS CARDS
+            ======================================= -->
+
+            <div class="stats-grid">
+
+
+                <!-- PROJECTS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon blue">
+                            ▣
+                        </div>
+
+                        <span class="stat-label">
+                            Projects
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-value">
+
+                        <strong id="projectCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-footer">
+
+                        <span id="projectGrowth">
+                            0 this month
+                        </span>
+
+                        <span>
+                            Total projects
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TASKS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon green">
+                            ✓
+                        </div>
+
+                        <span class="stat-label">
+                            Tasks Completed
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-value">
+
+                        <strong id="completedTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-footer">
+
+                        <span id="taskCompletionText">
+                            0% completion
+                        </span>
+
+                        <span>
+                            All tasks
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CODING TIME -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon purple">
+                            ◷
+                        </div>
+
+                        <span class="stat-label">
+                            Coding Time
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-value">
+
+                        <strong id="codingHours">
+                            0h
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-footer">
+
+                        <span id="weeklyCoding">
+                            0h this week
+                        </span>
+
+                        <span>
+                            Total time
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- STREAK -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon orange">
+                            🔥
+                        </div>
+
+                        <span class="stat-label">
+                            Current Streak
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-value">
+
+                        <strong id="currentStreak">
+                            0
+                        </strong>
+
+                        <span class="stat-unit">
+                            days
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-footer">
+
+                        <span id="longestStreak">
+                            Best: 0 days
+                        </span>
+
+                        <span>
+                            Keep going!
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ======================================
+                 MAIN ANALYTICS GRID
+            ======================================= -->
+
+            <div class="analytics-grid">
+
+
+                <!-- ==================================
+                     CODING ACTIVITY CHART
+                =================================== -->
+
+                <div class="analytics-card coding-chart-card">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Coding Activity
+                            </h3>
+
+                            <p>
+                                Your coding time over the last 7 days.
+                            </p>
+
+                        </div>
+
+
+                        <select
+                            id="codingPeriod"
+                            class="chart-select"
+                        >
+
+                            <option value="7">
+                                Last 7 days
+                            </option>
+
+                            <option value="30">
+                                Last 30 days
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="chart-area">
+
+                        <div class="chart-y-axis">
+
+                            <span>
+                                8h
+                            </span>
+
+                            <span>
+                                6h
+                            </span>
+
+                            <span>
+                                4h
+                            </span>
+
+                            <span>
+                                2h
+                            </span>
+
+                            <span>
+                                0h
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="codingChart"
+                            class="bar-chart"
+                        >
+
+                            <!-- JavaScript creates bars here -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     PROJECT PROGRESS
+                =================================== -->
+
+                <div class="analytics-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Project Progress
+                            </h3>
+
+                            <p>
+                                Your current project status.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="projectProgressChart"
+                        class="project-progress-list"
+                    >
+
+                        <!-- JavaScript adds projects -->
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ======================================
+                 SECOND ANALYTICS ROW
+            ======================================= -->
+
+            <div class="analytics-grid second-row">
+
+
+                <!-- TASK PERFORMANCE -->
+
+                <div class="analytics-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Task Performance
+                            </h3>
+
+                            <p>
+                                Your overall task completion.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="task-performance">
+
+
+                        <div class="donut-wrapper">
+
+                            <div
+                                id="taskDonut"
+                                class="donut"
+                            >
+
+                                <div class="donut-center">
+
+                                    <strong id="donutPercentage">
+                                        0%
+                                    </strong>
+
+                                    <span>
+                                        Complete
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="task-breakdown">
+
+                            <div class="breakdown-item">
+
+                                <span class="breakdown-dot completed"></span>
+
+                                <span>
+                                    Completed
+                                </span>
+
+                                <strong id="donutCompleted">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="breakdown-item">
+
+                                <span class="breakdown-dot active"></span>
+
+                                <span>
+                                    Active
+                                </span>
+
+                                <strong id="donutActive">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="breakdown-item">
+
+                                <span class="breakdown-dot total"></span>
+
+                                <span>
+                                    Total
+                                </span>
+
+                                <strong id="donutTotal">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MONTHLY PERFORMANCE -->
+
+                <div class="analytics-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Monthly Performance
+                            </h3>
+
+                            <p>
+                                Your progress this month.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="monthly-stats">
+
+
+                        <div class="monthly-stat">
+
+                            <div class="monthly-stat-icon">
+                                ▣
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    New Projects
+                                </span>
+
+                                <strong id="monthlyProjects">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="monthly-stat">
+
+                            <div class="monthly-stat-icon">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Tasks Finished
+                                </span>
+
+                                <strong id="monthlyTasks">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="monthly-stat">
+
+                            <div class="monthly-stat-icon">
+                                ◷
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Coding Hours
+                                </span>
+
+                                <strong id="monthlyCodingHours">
+                                    0h
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             PROJECTS
+        =========================================== -->
+
+        <section
+            id="projects"
+            class="section"
+        >
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Projects
+                    </h2>
+
+                    <p>
+                        Manage your projects and track your progress.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="addProjectButton"
+                    class="primary-button"
+                    type="button"
+                >
+                    + Add Project
+                </button>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <span>
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="projectSearch"
+                        placeholder="Search projects..."
+                    >
+
+                </div>
+
+
+                <select
+                    id="projectFilter"
+                    class="filter-select"
+                >
+
+                    <option value="all">
+                        All Projects
+                    </option>
+
+                    <option value="active">
+                        In Progress
+                    </option>
+
+                    <option value="completed">
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                id="projectsContainer"
+                class="projects-grid"
+            >
+
+                <!-- JavaScript creates projects -->
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             TASKS
+        =========================================== -->
+
+        <section
+            id="tasks"
+            class="section"
+        >
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Tasks
+                    </h2>
+
+                    <p>
+                        Stay organized and complete your development work.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="addTaskButton"
+                    class="primary-button"
+                    type="button"
+                >
+                    + Add Task
+                </button>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <select
+                    id="taskFilter"
+                    class="filter-select"
+                >
+
+                    <option value="all">
+                        All Tasks
+                    </option>
+
+                    <option value="active">
+                        Active
+                    </option>
+
+                    <option value="completed">
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                id="tasksContainer"
+                class="tasks-container"
+            >
+
+                <!-- JavaScript creates tasks -->
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             SKILLS
+        =========================================== -->
+
+        <section
+            id="skills"
+            class="section"
+        >
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Skills
+                    </h2>
+
+                    <p>
+                        Track your technical skills and learning progress.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="addSkillButton"
+                    class="primary-button"
+                    type="button"
+                >
+                    + Add Skill
+                </button>
+
+            </div>
+
+
+            <div
+                id="skillsContainer"
+                class="skills-grid"
+            >
+
+                <!-- JavaScript creates skills -->
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             GOALS
+        =========================================== -->
+
+        <section
+            id="goals"
+            class="section"
+        >
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Goals
+                    </h2>
+
+                    <p>
+                        Set goals and monitor your development journey.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="addGoalButton"
+                    class="primary-button"
+                    type="button"
+                >
+                    + Add Goal
+                </button>
+
+            </div>
+
+
+            <div
+                id="goalsContainer"
+                class="goals-grid"
+            >
+
+                <!-- JavaScript creates goals -->
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             STATISTICS
+        =========================================== -->
+
+        <section
+            id="statistics"
+            class="section"
+        >
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Statistics
+                    </h2>
+
+                    <p>
+                        Detailed insights into your development progress.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="detailed-statistics-grid">
+
+
+                <div class="detail-stat-card">
+
+                    <span>
+                        Total Projects
+                    </span>
+
+                    <strong id="detailProjects">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-stat-card">
+
+                    <span>
+                        Completed Projects
+                    </span>
+
+                    <strong id="detailCompletedProjects">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-stat-card">
+
+                    <span>
+                        Total Tasks
+                    </span>
+
+                    <strong id="detailTasks">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-stat-card">
+
+                    <span>
+                        Tasks Completed
+                    </span>
+
+                    <strong id="detailCompletedTasks">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-stat-card">
+
+                    <span>
+                        Total Skills
+                    </span>
+
+                    <strong id="detailSkills">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-stat-card">
+
+                    <span>
+                        Goals Completed
+                    </span>
+
+                    <strong id="detailGoals">
+                        0
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             ACTIVITY
+        =========================================== -->
+
+        <section
+            id="activity"
+            class="section"
+        >
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Recent Activity
+                    </h2>
+
+                    <p>
+                        Your latest development actions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="activityContainer"
+                class="activity-container"
+            >
+
+                <!-- JavaScript creates activities -->
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             SETTINGS
+        =========================================== -->
+
+        <section
+            id="settings"
+            class="section"
+        >
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Settings
+                    </h2>
+
+                    <p>
+                        Manage your dashboard preferences and data.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-container">
+
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <h3>
+                            Appearance
+                        </h3>
+
+                        <p>
+                            Switch between dark and light themes.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="settingsThemeButton"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Change Theme
+                    </button>
+
+                </div>
+
+
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <h3>
+                            Coding Timer
+                        </h3>
+
+                        <p>
+                            Track the time you spend coding.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timer-controls">
+
+                        <strong id="timerDisplay">
+                            00:00:00
+                        </strong>
+
+                        <button
+                            id="startTimerButton"
+                            class="primary-button"
+                            type="button"
+                        >
+                            Start
+                        </button>
+
+                        <button
+                            id="stopTimerButton"
+                            class="secondary-button"
+                            type="button"
+                        >
+                            Stop
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="setting-item danger-setting">
+
+                    <div>
+
+                        <h3>
+                            Dashboard Data
+                        </h3>
+
+                        <p>
+                            Permanently delete all your saved dashboard data.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="clearDataButton"
+                        class="danger-button"
+                        type="button"
+                    >
+                        Clear All Data
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             FOOTER
+        =========================================== -->
+
+        <footer class="footer">
+
+            <div>
+
+                <strong>
+                    DevDashboard
+                </strong>
+
+                <span>
+                    Developer Workspace
+                </span>
+
+            </div>
+
+
+            <p>
+                Built with HTML, CSS & JavaScript
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         MODAL
+    =========================================== -->
+
+    <div
+        id="modal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2 id="modalTitle">
+                        Add Item
+                    </h2>
+
+                    <p id="modalSubtitle">
+                        Create something new.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="closeModal"
+                    class="modal-close"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div id="modalBody">
+
+                <!-- JavaScript creates form -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
