@@ -30,96 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ==========================================
-    // DEFAULT DATA
-    // ==========================================
-
-    if (projects.length === 0) {
-
-        projects = [
-            {
-                id: Date.now(),
-                name: "Developer Dashboard",
-                description: "My personal developer workspace.",
-                progress: 65,
-                createdAt: new Date().toISOString()
-            }
-        ];
-
-        saveData();
-    }
-
-
-    if (tasks.length === 0) {
-
-        tasks = [
-            {
-                id: Date.now() + 1,
-                name: "Finish dashboard",
-                completed: false,
-                createdAt: new Date().toISOString()
-            },
-
-            {
-                id: Date.now() + 2,
-                name: "Learn JavaScript",
-                completed: true,
-                createdAt: new Date().toISOString()
-            }
-        ];
-
-        saveData();
-    }
-
-
-    if (skills.length === 0) {
-
-        skills = [
-            {
-                id: Date.now() + 3,
-                name: "HTML",
-                level: 90
-            },
-
-            {
-                id: Date.now() + 4,
-                name: "CSS",
-                level: 80
-            },
-
-            {
-                id: Date.now() + 5,
-                name: "JavaScript",
-                level: 60
-            }
-        ];
-
-        saveData();
-    }
-
-
-    if (goals.length === 0) {
-
-        goals = [
-            {
-                id: Date.now() + 6,
-                name: "Learn JavaScript",
-                description: "Become comfortable with JavaScript.",
-                progress: 60
-            },
-
-            {
-                id: Date.now() + 7,
-                name: "Build 10 Projects",
-                description: "Create ten useful projects.",
-                progress: 30
-            }
-        ];
-
-        saveData();
-    }
-
-
-    // ==========================================
     // SAVE DATA
     // ==========================================
 
@@ -235,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
     }
 
-
     updateDate();
 
 
@@ -268,7 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!activityContainer) return;
 
-
         if (activities.length === 0) {
 
             activityContainer.innerHTML = `
@@ -282,11 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div>
 
                         <strong>
-                            Welcome to DevDashboard
+                            No recent activity
                         </strong>
 
                         <p>
-                            Start working on your projects.
+                            Start working to see your activity here.
                         </p>
 
                     </div>
@@ -396,11 +304,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
                     <h3>
-                        No projects found
+                        No projects yet
                     </h3>
 
                     <p>
-                        Add a project to get started.
+                        Add your first project to get started.
                     </p>
 
                 </div>
@@ -485,7 +393,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
 
     const addProjectButton =
-        document.getElementById("addProjectButton");
+        document.getElementById(
+            "addProjectButton"
+        );
 
 
     if (addProjectButton) {
@@ -495,7 +405,9 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 const name =
-                    prompt("Project name:");
+                    prompt(
+                        "Project name:"
+                    );
 
                 if (!name) return;
 
@@ -724,8 +636,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (projects.length === 0) {
 
-            container.innerHTML =
-                "<p>No projects yet.</p>";
+            container.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div>
+                        📊
+                    </div>
+
+                    <h3>
+                        No project data
+                    </h3>
+
+                    <p>
+                        Create a project to see progress statistics.
+                    </p>
+
+                </div>
+
+            `;
 
             return;
 
@@ -823,11 +752,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
                     <h3>
-                        No tasks found
+                        No tasks yet
                     </h3>
 
                     <p>
-                        Add a task to start working.
+                        Add your first task to start working.
                     </p>
 
                 </div>
@@ -958,9 +887,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 !task.completed;
 
 
+            if (task.completed) {
+
+                task.completedAt =
+                    new Date().toISOString();
+
+            } else {
+
+                delete task.completedAt;
+
+            }
+
+
             saveData();
 
             renderTasks();
+
+            updateStatistics();
 
             addActivity(
                 task.completed
@@ -996,6 +939,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             renderTasks();
 
+            updateStatistics();
+
             addActivity(
                 `Deleted task "${task.name}"`
             );
@@ -1030,8 +975,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (skills.length === 0) {
 
-            skillsContainer.innerHTML =
-                "<p>No skills yet.</p>";
+            skillsContainer.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div>
+                        🧠
+                    </div>
+
+                    <h3>
+                        No skills yet
+                    </h3>
+
+                    <p>
+                        Add your skills to track your progress.
+                    </p>
+
+                </div>
+
+            `;
 
             return;
 
@@ -1071,6 +1033,10 @@ document.addEventListener("DOMContentLoaded", () => {
             `).join("");
     }
 
+
+    // ==========================================
+    // ADD SKILL
+    // ==========================================
 
     const addSkillButton =
         document.getElementById(
@@ -1127,8 +1093,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 renderSkills();
 
-                updateStatistics();
-
                 addActivity(
                     `Added skill "${name}"`
                 );
@@ -1150,8 +1114,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (goals.length === 0) {
 
-            goalsContainer.innerHTML =
-                "<p>No goals yet.</p>";
+            goalsContainer.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div>
+                        🎯
+                    </div>
+
+                    <h3>
+                        No goals yet
+                    </h3>
+
+                    <p>
+                        Add your first goal to track your progress.
+                    </p>
+
+                </div>
+
+            `;
 
             return;
 
@@ -1195,6 +1176,10 @@ document.addEventListener("DOMContentLoaded", () => {
             `).join("");
     }
 
+
+    // ==========================================
+    // ADD GOAL
+    // ==========================================
 
     const addGoalButton =
         document.getElementById(
@@ -1307,8 +1292,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-        // PROJECT COUNT
-
         if (projectCount) {
 
             projectCount.textContent =
@@ -1316,8 +1299,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
-        // TASK COUNT
 
         if (completedTasks) {
 
@@ -1327,8 +1308,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        // TASK COMPLETION
-
         if (taskCompletionText) {
 
             taskCompletionText.textContent =
@@ -1336,8 +1315,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
-        // MONTHLY PROJECTS
 
         const now =
             new Date();
@@ -1378,8 +1355,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        // MONTHLY TASKS
-
         const monthTasks =
             tasks.filter(task => {
 
@@ -1414,8 +1389,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
-        // DETAIL STATISTICS
 
         const detailProjects =
             document.getElementById(
@@ -1480,8 +1453,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ).length;
 
 
-        // DONUT
-
         const donutPercentage =
             document.getElementById(
                 "donutPercentage"
@@ -1531,11 +1502,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (taskDonut) {
 
+            const degree =
+                completionRate * 3.6;
+
+
             taskDonut.style.background =
                 `conic-gradient(
                     #4f8cff 0deg,
-                    #4f8cff ${completionRate * 3.6}deg,
-                    #252d3d ${completionRate * 3.6}deg,
+                    #4f8cff ${degree}deg,
+                    #252d3d ${degree}deg,
                     #252d3d 360deg
                 )`;
 
@@ -1547,56 +1522,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateStreak();
 
     }
-
-
-    // ==========================================
-    // TASK COMPLETION DATE
-    // ==========================================
-
-    const originalToggleTask =
-        window.toggleTask;
-
-
-    window.toggleTask =
-        function(id) {
-
-            const task =
-                tasks.find(
-                    t => t.id === id
-                );
-
-            if (!task) return;
-
-
-            task.completed =
-                !task.completed;
-
-
-            if (task.completed) {
-
-                task.completedAt =
-                    new Date().toISOString();
-
-            } else {
-
-                delete task.completedAt;
-
-            }
-
-
-            saveData();
-
-            renderTasks();
-
-            updateStatistics();
-
-            addActivity(
-                task.completed
-                    ? `Completed task "${task.name}"`
-                    : `Reopened task "${task.name}"`
-            );
-
-        };
 
 
     // ==========================================
@@ -2133,8 +2058,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!confirmed) return;
 
 
-                // Clear every dashboard key
-
                 localStorage.removeItem(
                     "dev_projects"
                 );
@@ -2160,8 +2083,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-                // Clear everything in memory
-
                 projects = [];
 
                 tasks = [];
@@ -2174,8 +2095,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 codingSessions = [];
 
-
-                // Reset timer
 
                 if (timerInterval) {
 
@@ -2190,8 +2109,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 timerRunning = false;
 
-
-                // Update UI
 
                 renderProjects();
 
